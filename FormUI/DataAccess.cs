@@ -16,7 +16,11 @@ namespace FormUI
         public void InsertPerson(string firstName, string lastName, string email, string phone)
         {
             using IDbConnection connection = new SqlConnection(Helper.CnnVal("SampleDB"));
-            connection.Execute("dbo.People_Insert @FirstName, @LastName, @EmailAddress, @PhoneNumber", new { FirstName = firstName, LastName = lastName, EmailAddress = email, PhoneNumber = phone });
+            var people = new List<Person>
+            {
+                new Person { FirstName = firstName, LastName = lastName, EmailAddress = email, PhoneNumber = phone }
+            };
+            connection.Execute("dbo.People_Insert @FirstName, @LastName, @EmailAddress, @PhoneNumber", people);
         }
     }
 }
