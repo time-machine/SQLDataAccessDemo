@@ -1,8 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace FormUI
+﻿namespace FormUI
 {
     public class Person
     {
@@ -11,5 +7,10 @@ namespace FormUI
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
         public string PhoneNumber { get; set; }
+
+        public string FullInfo
+        {
+            get { return $"{FirstName} {LastName} ({EmailAddress}) {PhoneNumber}"; }
+        }
     }
 }
